@@ -7,12 +7,12 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '4.1.+', changing: true
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
     }
 }
 
 plugins {
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
 apply plugin: 'net.minecraftforge.gradle'
@@ -23,7 +23,8 @@ version = project.version
 group = 'coffeecatrailway.' + project.modId
 archivesBaseName = project.modId
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(8) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+// Mojang ships Java 16 to end users in 1.17+ instead of Java 8 in 1.16 or lower, so your mod should target Java 16.
+java.toolchain.languageVersion = JavaLanguageVersion.of(16)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
@@ -110,12 +111,12 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${project.jeiVersion}")
     compileOnly fg.deobf("mezz.jei:jei-${project.jeiVersion}:api")
 
-    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${project.topVersion}:api")
-    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${project.topVersion}")
+//    compileOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${project.topVersion}:api")
+//    runtimeOnly fg.deobf("mcjty.theoneprobe:TheOneProbe-1.16:${project.topVersion}")
 
     implementation fg.deobf("curse.maven:biomes-o-plenty-220318:${project.bopVersion}")
-    implementation fg.deobf("curse.maven:druidcraft-340991:${project.druidcraftVersion}")
-    implementation fg.deobf("curse.maven:the-twilight-forest-227639:${project.twilightVersion}")
+    //implementation fg.deobf("curse.maven:druidcraft-340991:${project.druidcraftVersion}")
+    //implementation fg.deobf("curse.maven:the-twilight-forest-227639:${project.twilightVersion}")
 
     runtimeOnly fg.deobf("curse.maven:catalogue-459701:3335979")
 
